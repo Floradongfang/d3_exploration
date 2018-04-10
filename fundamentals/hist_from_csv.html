@@ -28,7 +28,7 @@
 		// this function creates a new div for each row of data and binds them
 		// together
 		function dataViz(incomingData) {
-			var margin = {top: 20, right: 20, bottom: 20, left: 20},
+			var margin = {top: 20, right: 20, bottom: 20, left: 40},
         width = 960 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
 
@@ -39,34 +39,39 @@
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 			var maxPop = d3.max(incomingData, d => d.population);
-			var yScale = d3.scaleLinear().domain([0,maxPop]).range([margin.top, height + margin.bottom]);
+			var yScale = d3.scaleLinear().domain([0,maxPop]).range([height-margin.bottom, margin.top]);
 			var xScale = d3.scaleBand()
 										 .domain(incomingData.map(function(d) { return d.label; }))
-										 .range([0, width], 0.1);
+										 .range([margin.left, width-margin.right]);
 
 			var xAxis = d3.axisBottom(xScale)
 										.scale(xScale)
 										.ticks(incomingData.length);
+
+			var yAxis = d3.axisLeft()
+										.scale(yScale);
 
 			svg.selectAll("rect")
 				 .data(incomingData)
 				 .enter()
 				 .append("rect")
 				 	.attr("width", 50)
-					.attr("height", d => yScale(d.population))
-					.attr("x", (d,i) => xScale(d.label))
-					.attr("y", d => 480 - yScale(d.population))
+					.attr("height", d => height - yScale(d.population))
+					.attr("x", (d,i) => xScale(d.label)+12)
+					.attr("y", d => yScale(d.population))
 					.style("fill", "#FE9922")
 					.style("stroke", "#9A8B7A")
-					.style("stroke-width", "1px");+
+					.style("stroke-width", "1px");
 
 			svg.append("g")
           .attr("class", "x axis")
           .attr("transform", "translate(0," + height + ")")
           .call(xAxis);
 
-
-
+      svg.append("g")
+          .attr("class", "y axis")
+          .attr("transform", "translate(" + margin.left + "," + margin.bottom +")")
+          .call(yAxis);
 		}
 	</script>
 </body>
