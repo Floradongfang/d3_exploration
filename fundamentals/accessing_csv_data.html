@@ -13,6 +13,8 @@
 				dataViz(data);
 			}
 		});
+		// this function creates a new div for each row of data and binds them
+		// together
 		function dataViz(incomingData) {
 			d3.select("body").selectAll("div.cities")
 				.data(incomingData)
