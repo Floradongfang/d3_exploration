@@ -1,4 +1,4 @@
-Entity,Year,CO? emissions per capita (tonnes per year),GDP per capita (inflation and PPP-adjusted) (2011 international-$),Total population (Gapminder)
+Entity,Year,CO2_tons_per_capita,GDP_per_capita,total_population
 Albania,2000,0.9909,4869.447645052876,3071856.0
 Algeria,2000,2.8626,9375.664009655316,30533827.0
 Angola,2000,0.6973,2266.9476835322025,13926373.0
