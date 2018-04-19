@@ -22,7 +22,8 @@ class BarChart extends Component {
 
   createBarChart() {
     const node = this.node
-    const dataMax = max(this.props.data)
+    const dataMax = max(this.props.data.map(d => sum(d.data)))
+    const barWidth = this.props.size[0] / this.props.data.length
     const yScale = scaleLinear()
       .domain([0, dataMax])
       .range([0, this.props.size[1]])
@@ -42,15 +43,18 @@ class BarChart extends Component {
     select(node)
       .selectAll("rect")
       .data(this.props.data)
-      .style("fill", "#fe9922")
-      .attr("x", (d,i) => i * 25 )
-      .attr("y", d => this.props.size[1] - yScale(d))
-      .attr("height", d => yScale(d))
-      .attr("width", 25)
+      .attr("x", (d,i) => i * barWidth )
+      .attr("y", d => this.props.size[1] - yScale(sum(d.data)))
+      .attr("height", d => yScale(sum(d.data)))
+      .attr("width", barWidth)
+      .style("fill", (d,i) => this.props.colorScale(d.launchday))
+      .style("stroke", "black")
+      .style("stroke-opacity", 0.25)
   }
 
   render() {
-    return <svg ref={node => this.node = node} width={500} height={500}> </svg>
+    return <svg ref={node => this.node = node} 
+            width={this.props.size[0]} height={this.props.size[1]}> </svg>
   }
 }
 
