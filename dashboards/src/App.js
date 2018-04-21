@@ -3,6 +3,7 @@ import './App.css';
 import BarChart from './BarChart'
 import worlddata from './world'
 import WorldMap from './WorldMap'
+import StreamGraph from './StreamGraph'
 import { range, sum } from 'd3-array'
 import { scaleThreshold } from 'd3-scale'
 import { geoCentroid } from 'd3-geo'
@@ -30,9 +31,14 @@ class App extends Component {
         <div>
           {/* Cool, we can pass data directly to a custom-built visualization
           //   in an html element's tag*/}
+          <StreamGraph colorScale={colorScale} data={appdata} size={[1000,250]} />
+
           <BarChart colorScale={colorScale} data={appdata} size={[500,500]} />
 
           <WorldMap colorScale={colorScale} data={appdata} size={[500,400]} />
+
+          
+
         </div>
         
       </div>
