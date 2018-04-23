@@ -7,16 +7,19 @@ import { scaleLinear } from 'd3-scale'
 
 class StreamGraph extends Component {
 	render() {
+		console.log(this.props.data.length)
+
+		const dataLen = this.props.data.length
 
 		{/* this initializes a blank array (of 30 elements) to store our data */}
-		const stackData = range(30).map(() => ({}))
-		for (let x = 0; x < 30; x++) {
+		const stackData = range(dataLen).map(() => ({}))
+		for (let x = 0; x < dataLen; x++) {
 			this.props.data.forEach(country => {
 				stackData[x][country.id] = country.data[x]
 			})
 		}
 		const xScale = scaleLinear()
-			.domain([0, 30])
+			.domain([0, dataLen])
 			.range([0, this.props.size[0]])
 
 		const yScale = scaleLinear()
@@ -38,7 +41,9 @@ class StreamGraph extends Component {
 			<path
 				key={"stack" + i}
 				d={stackArea(d)}
-				style={{ fill: this.props.colorScale(this.props.data[i].launchday),
+				onMouseEnter={() => {this.props.onHover(this.props.data[i])}}
+				style={{ fill: this.props.hoverElement === this.props.data[i]["id"] ?
+						"#f7fcb9" : this.props.colorScale(this.props.data[i].launchday),
 						stroke: "black", strokeOpacity: 0.25 }}
 			/>)
 
