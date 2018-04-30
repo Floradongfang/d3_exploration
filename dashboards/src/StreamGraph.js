@@ -11,7 +11,7 @@ class StreamGraph extends Component {
 
 		const dataLen = this.props.data.length
 
-		{/* this initializes a blank array (of 30 elements) to store our data */}
+		{/* this initializes a blank array to store our data */}
 		const stackData = range(dataLen).map(() => ({}))
 		for (let x = 0; x < dataLen; x++) {
 			this.props.data.forEach(country => {

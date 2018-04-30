@@ -39,6 +39,7 @@ Thumbs.db
 # All files in data
 ###################
 node_modules/
+data/raw_data/
 
 *.PNG
 *.pkl
