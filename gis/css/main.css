@@ -1,0 +1,8 @@
+.hover {
+  fill: #5ad75a;
+}
+
+.hover-line {
+  stroke: #5ad75a !important;
+  stroke-width: 2px;
+}

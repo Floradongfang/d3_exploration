@@ -27,6 +27,7 @@
     "d3-shape": "1.2.0",
     "d3-svg-legend": "2.25.6",
     "d3-transition": "1.1.1",
-    "react-dom": "16.3.2"
+    "react-dom": "16.3.2",
+    "topojson": "^3.0.2"
   }
 }

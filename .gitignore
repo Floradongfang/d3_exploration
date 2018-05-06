@@ -40,6 +40,7 @@ Thumbs.db
 ###################
 node_modules/
 data/raw_data/
+maps/
 
 *.PNG
 *.pkl
