@@ -14,13 +14,21 @@ Promise
 	.then(resolve => {
 		// console.log(map);
 		// console.log(resolve[0]);
-		console.log(resolve[2]);
+		// console.log(resolve[2]);
 		const map = new Choropleth(map_svg, resolve[0], resolve[1], resolve[2])
 		// console.log(resolve[0].features);
 		map.dispatch.on('hover', (d, i) => {
 			resolve[3].hover = d;
 			map.hover(resolve[3]);
 		})
-
+		const options = document.getElementById('options');
+		options.onchange = function(v) {
+			console.log('v');
+			console.log(v);
+			console.log('this.value');
+			console.log(this.value);
+			resolve[3].indicator = this.value;
+			map.update(resolve[3]);
+		}
 	});
 

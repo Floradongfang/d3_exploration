@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Chicago Public Health</title>
+  <title>American Community Survey 2016</title>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/Choropleth.css">
@@ -13,6 +13,28 @@
 
 <body>
   <div class="container">
+    <div class='row text-center'>
+      <h1>Chicago Health Statistics By Community:</h1>
+
+      <div id="menu" class="col-md-12">
+        <label for="options">Indicator:</label>
+        <select id="options" class="selectpicker">
+          <optgroup label="Demographics- All Ages">
+            <option value="Estimate_Total">Estimate_Total</option>
+            <option value="White_alone">White_alone</option>
+            <option value="Black_or_African_American_alone">Black_or_African_American_alone</option>
+            <option value="American_Indian_and_Alaska_Native_alone">American_Indian_and_Alaska_Native_alone</option>
+            <option value="Asian_alone">Asian_alone</option>
+            <option value="Native_Hawaiian_and_Other_Pacific_Islander_alone">Native_Hawaiian_and_Other_Pacific_Islander_alone</option>
+            <option value="Some_other_race_alone">Some_other_race_alone</option>
+            <option value="Two_or_more_races">Two_or_more_races</option>
+            <option value="Two_or_more_races_-_Two_races_including_Some_other_race">Two_or_more_races_-_Two_races_including_Some_other_race</option>
+            <option value="Two_or_more_races_-_Two_races_excluding_Some_other_race,_and_three_or_more_races">Two_or_more_races_-_Two_races_excluding_Some_other_race,_and_three_or_more_races</option>
+          </optgroup>
+        </select>
+        <button id="resetButton" class="btn btn-primary" type="button">Clear Selections</button>
+      </div>
+    </div>
 
     <div class'row'>
       <svg id="map" height="500" width="960"></svg>

@@ -1,10 +1,11 @@
 class Choropleth {
-	constructor(svg, geojson, outline, raw_data) {
+	constructor(svg, geojson, outline, raw_data, colorer) {
 		const self = this;
 		this.svg = svg;
 		this.geojson = geojson;
 		this.outline = outline;
 		this.raw_data = raw_data;
+		this.colorer = colorer;
 		const rollup = d3.nest().key(d => d.Id).entries(this.raw_data);
 		console.log('rollup:');
 		console.log(rollup);
@@ -37,12 +38,14 @@ class Choropleth {
 		// 	// .lower()
 	}
 
-	update() {
+	update(state) {
 		const self = this;
 		this.state = state;
+		console.log('state');
+		console.log(state);
 		this.counties.selectAll('path').classed('active', function (d, i) {
 				if (state.selected[d.properties.GEOID]) { d3.select(this).raise(); }
-				state,selected[d.properties.GEOID];
+				state.selected[d.properties.GEOID];
 			})
 			.transition()
 			.duration(50)
