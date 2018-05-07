@@ -1,9 +1,13 @@
 class Choropleth {
-	constructor(svg, geojson, outline) {
+	constructor(svg, geojson, outline, raw_data) {
 		const self = this;
 		this.svg = svg;
 		this.geojson = geojson;
 		this.outline = outline;
+		this.raw_data = raw_data;
+		const rollup = d3.nest().key(d => d.Id).entries(this.raw_data);
+		console.log('rollup:');
+		console.log(rollup);
 
 		this.dispatch = d3.dispatch('click', 'hover');
 		this.map = d3.geoPath().projection(d3.geoAlbersUsa());
